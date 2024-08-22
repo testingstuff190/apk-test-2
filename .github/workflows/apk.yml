@@ -72,8 +72,8 @@ jobs:
       - name: Dummy Build
         run: echo "Building"
         # run: exit 1
-      - name: Fetch all commits
-        run: git fetch --unshallow
+     #  - name: Fetch all commits
+     #   run: git fetch --unshallow
 
       - name: Generate Release Notes
         run: |
