@@ -84,5 +84,5 @@ jobs:
           firebase appdistribution:distribute "com.afwsamples.testdpc_9.0.8-9008_minAPI21(nodpi)_apkmirror.com.apk" \
             --app ${{ secrets.FIREBASE_APP_ID }} \
             --groups "testers" \
-            --release-notes-file $NEW_VERSION_NUMBER \
+            --release-notes $NEW_VERSION_NUMBER \
             --debug
