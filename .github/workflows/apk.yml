@@ -81,7 +81,7 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/account.json
         run: |
-          firebase appdistribution:distribute com.afwsamples.testdpc_9.0.8-9008_minAPI21(nodpi)_apkmirror.com.apk \
+          firebase appdistribution:distribute "com.afwsamples.testdpc_9.0.8-9008_minAPI21(nodpi)_apkmirror.com.apk" \
             --app ${{ secrets.FIREBASE_APP_ID }} \
             --groups "testers" \
             --release-notes-file $NEW_VERSION_NUMBER \
