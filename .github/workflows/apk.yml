@@ -31,6 +31,12 @@ jobs:
           # Update the package list and install the Google Cloud SDK
           sudo apt-get update && sudo apt-get install -y google-cloud-sdk
           
+          
+      - name: Set up Google Cloud credentials
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > /tmp/account.json
+
       - name: Authenticate with Google Cloud
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/account.json
@@ -39,10 +45,6 @@ jobs:
           gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
           gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
           
-      - name: Set up Google Cloud credentials
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        run: echo "$GOOGLE_APPLICATION_CREDENTIALS" > /tmp/account.json
       - name: Fetch version from Firebase Cloud Storage
         env:
           GOOGLE_APPLICATION_CREDENTIALS: /tmp/account.json
